@@ -1,244 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deepak Chhikara | Senior Data Analyst</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deepak Chhikara — Senior Data Analyst</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #f8fafc;
-      --text: #0f172a;
-      --accent: #2563eb;
-      --secondary: #1e293b;
-      --highlight: #38bdf8;
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent:#06b6d4; --accent-2:#8b5cf6; --glass: rgba(255,255,255,0.04);
+      --text:#e6eef6;
+      --maxw:1100px;
     }
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+    [data-theme="light"]{
+      --bg:#f8fafc; --card:#ffffff; --muted:#475569; --accent:#2563eb; --accent-2:#8b5cf6; --glass: rgba(15,23,42,0.04);
+      --text:#0f1724;
     }
-    header {
-      background: linear-gradient(135deg, var(--secondary), var(--text));
-      color: #fff;
-      text-align: center;
-      padding: 80px 20px 60px;
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--text);background:linear-gradient(180deg,var(--bg),var(--card));-webkit-font-smoothing:antialiased;}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .wrap{max-width:var(--maxw);margin:32px auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:16px;z-index:40}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white}
+    .navlinks{display:flex;gap:14px;align-items:center}
+    .navlinks a{padding:8px 10px;border-radius:8px;font-weight:600;color:var(--text);opacity:0.9}
+    .navlinks a.active{background:var(--glass)}
+    .cta{display:inline-block;padding:9px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041025;font-weight:700}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;padding:48px 0}
+    .hero-left h1{font-size:2.4rem;margin:0 0 8px;line-height:1.02}
+    .hero-left p.lead{color:var(--muted);margin:0 0 18px;max-width:70ch}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#021426;padding:12px 18px;border-radius:10px;font-weight:700;border:none;cursor:pointer}
+    .btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+    .profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:18px;border-radius:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6);text-align:center}
+    .avatar{width:120px;height:120px;border-radius:18px;object-fit:cover;border:4px solid rgba(255,255,255,0.03);background:linear-gradient(90deg,var(--accent),var(--accent-2));display:inline-block}
+    .small{font-size:0.9rem;color:var(--muted)}
+    .socials{display:flex;gap:10px;justify-content:center;margin-top:12px}
+
+    /* Sections */
+    section{padding:40px 0}
+    h2{font-size:1.1rem;margin:0 0 14px;padding-bottom:8px;display:inline-block;border-bottom:3px solid var(--accent);color:var(--text)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(2,6,23,0.45);border:1px solid rgba(255,255,255,0.02)}
+    .project-title{font-weight:700;margin:0 0 8px}
+    .muted{color:var(--muted);font-size:0.95rem}
+    .kpi{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap}
+    .kpi .pill{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--text)}
+
+    /* Timeline */
+    .timeline{border-left:2px dashed rgba(255,255,255,0.04);padding-left:18px}
+    .timeline-item{margin-bottom:18px}
+    .timeline-item h4{margin:0;font-size:1rem}
+
+    /* Process */
+    .process{display:flex;gap:12px;flex-wrap:wrap}
+    .process .step{flex:1;min-width:180px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:10px;text-align:center}
+
+    /* Metrics table */
+    .metrics{display:flex;gap:12px;flex-wrap:wrap}
+    .metric-card{flex:1;min-width:160px;padding:16px;border-radius:10px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .metric-num{font-size:1.6rem;font-weight:800;color:var(--accent)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .contact-grid a{display:inline-block;margin-top:8px;color:var(--accent)}
+
+    /* Footer */
+    footer{padding:30px 0;text-align:center;color:var(--muted);font-size:0.95rem}
+
+    /* small screens */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .hero-left{order:2}
+      .hero-ctas{justify-content:center}
+      .grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      nav{gap:8px}
     }
-    header h1 {
-      font-size: 2.8em;
-      margin: 0 0 10px;
-    }
-    header p {
-      margin: 5px 0;
-      font-size: 1.1em;
-    }
-    .links a {
-      color: var(--highlight);
-      margin: 0 8px;
-    }
-    .btn {
-      display: inline-block;
-      background: var(--highlight);
-      color: var(--secondary);
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 20px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: scale(1.05);
-    }
-    section {
-      max-width: 950px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      padding: 20px;
-      margin-bottom: 25px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 8px;
-    }
-    footer {
-      background: var(--text);
-      color: #fff;
-      text-align: center;
-      padding: 25px;
-      font-size: 0.9em;
-    }
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.2em; }
-      section { margin: 40px 15px; }
-    }
+
+    /* animations */
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp 0.6s forwards}
+    .delay-1{animation-delay:0.06s}
+    .delay-2{animation-delay:0.12s}
+    .delay-3{animation-delay:0.18s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* subtle highlight for active nav */
+    .navlinks a:hover{background:var(--glass)}
+    .theme-toggle{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px;border-radius:10px;color:var(--text);cursor:pointer}
   </style>
 </head>
 <body>
 
-  <!-- HERO / HEADER -->
-  <header>
-    <h1>Deepak Chhikara</h1>
-    <p>Senior Data Analyst | Data Scientist</p>
-    <p>📍 Delhi, India | 📞 +91 9654512346 | 
-      <a href="mailto:dpk.chhikara@gmail.com" style="color:#38bdf8;">dpk.chhikara@gmail.com</a>
-    </p>
-    <div class="links">
-      <a href="https://linkedin.com/in/imchhikara" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/imchhikara" target="_blank">GitHub</a> |
-      <a href="#contact">Contact</a>
-    </div>
-    <a href="Deepak_SDA.pdf" class="btn" download>📄 Download Resume</a>
-  </header>
+  <!-- NAV -->
+  <div class="wrap" style="position:relative;">
+    <nav>
+      <div class="brand">
+        <div class="logo">DC</div>
+        <div style="line-height:1;">
+          <div style="font-weight:800">Deepak Chhikara</div>
+          <div style="font-size:0.85rem;color:var(--muted)">Senior Data Analyst</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="navlinks" id="navlinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#dashboards">Dashboards</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button id="themeBtn" class="theme-toggle" title="Toggle theme">🌗</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-left fade-up delay-1">
+        <h1>Senior Data Analyst • Driving measurable growth with data</h1>
+        <p class="lead muted">
+          I build scalable analytics systems, automated insight pipelines (LLM-powered), and visualization frameworks that convert data into business outcomes — creative testing, ad optimization, and KPI automation are my core areas.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn" href="Deepak_SDA.pdf" download>📄 Download Resume</a>
+          <a class="btn alt" href="#projects">See Projects</a>
+          <a class="btn alt" href="mailto:dpk.chhikara@gmail.com">✉️ Email</a>
+        </div>
+
+        <div style="margin-top:18px" class="muted">
+          Location: Delhi, India • Open to Data Analytics / Data Science roles
+        </div>
+      </div>
+
+      <div class="hero-right fade-up delay-2">
+        <div class="profile-card">
+          <!-- If you want a real photo, add profile.jpg to repo root and change src -->
+          <img src="profile.jpg" alt="Deepak Chhikara" onerror="this.style.display='inline-block';this.style.background='linear-gradient(90deg,var(--accent),var(--accent-2))';this.style.width='120px';this.style.height='120px';this.style.borderRadius='18px';" class="avatar" />
+          <h3 style="margin-top:12px">Deepak Chhikara</h3>
+          <div class="small muted">Senior Data Analyst • Python • SQL • Tableau</div>
+          <div class="socials">
+            <a href="https://linkedin.com/in/imchhikara" target="_blank" class="small">LinkedIn</a>
+            <a href="https://github.com/imchhikara" target="_blank" class="small">GitHub</a>
+            <a href="https://public.tableau.com/app/profile/imchhikara" target="_blank" class="small">Tableau</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
 
   <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a <b>Senior Data Analyst</b> with over 5 years of experience transforming data into impactful business insights.
-      My expertise lies in <b>data analytics, experimentation frameworks, automation, and visualization</b> — 
-      driving measurable improvements in performance and efficiency.
-    </p>
-    <p>
-      At BLKBOX.ai, I’ve built scalable frameworks that automate creative testing and insights generation, 
-      increasing qualified asset contributions from 55% to 70% and boosting marketing ROI. 
-      I love connecting data, strategy, and technology to tell meaningful stories that accelerate business growth.
-    </p>
-  </section>
+  <div class="wrap">
+    <section id="about" class="fade-up delay-3">
+      <h2>About</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:14px">
+        <div style="flex:1;min-width:260px" class="card">
+          <p><strong>Who I am</strong></p>
+          <p class="muted">Senior Data Analyst with 5+ years of experience turning complex datasets into operational decisions. At BLKBOX.ai I led AI-driven ad production solutions and built automation that delivered measurable uplift in revenue and KPI efficiency.</p>
+
+          <p style="margin-top:12px"><strong>Specialties</strong></p>
+          <ul class="muted">
+            <li>Automation & Insights (Python + OpenAI integrations)</li>
+            <li>Creative testing & scoring frameworks (ROAS, IPM, CPUP)</li>
+            <li>Interactive dashboards (Tableau, Power BI)</li>
+            <li>A/B Testing and experimentation frameworks</li>
+          </ul>
+        </div>
+
+        <div style="width:320px" class="card">
+          <p><strong>Quick Contact</strong></p>
+          <p class="muted">📍 Delhi, India<br>📞 +91 9654512346<br>✉️ <a href="mailto:dpk.chhikara@gmail.com">dpk.chhikara@gmail.com</a></p>
+          <a class="cta" href="Deepak_SDA.pdf" style="display:inline-block;margin-top:8px" download>Download Resume</a>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Featured Projects</h2>
+  <div class="wrap">
+    <section id="projects" class="fade-up">
+      <h2>Featured Projects</h2>
+      <div class="grid" style="margin-top:14px">
+        <div class="card">
+          <div class="project-title">Creative Performance Framework</div>
+          <div class="muted">Automated scoring & qualification of ad creatives across platforms (Facebook, TikTok, Snap).</div>
+          <div class="kpi" style="margin-top:12px">
+            <div class="pill">Win rate +15%</div>
+            <div class="pill">Spend efficiency +25%</div>
+            <div class="pill">Python • SQL • Tableau</div>
+          </div>
+          <p style="margin-top:12px" class="muted">Deliverables: Scoring pipeline, reproducible notebooks, Tableau dashboard. <a href="https://github.com/imchhikara" target="_blank">View code</a></p>
+        </div>
 
-    <div class="card">
-      <h3>Creative Performance Framework</h3>
-      <ul>
-        <li>Developed an automated scoring system to identify high-performing creatives across platforms.</li>
-        <li>Used Python, Pandas, and SQL to compute metrics like ROAS, IPM, and CPUP.</li>
-        <li>Improved creative win-rate by 15% and boosted spend efficiency by 25%.</li>
-      </ul>
-    </div>
+        <div class="card">
+          <div class="project-title">AI Ads Production System</div>
+          <div class="muted">LLM + analytics workflow to automate creative generation and selection.</div>
+          <div class="kpi" style="margin-top:12px">
+            <div class="pill">Manual effort -90%</div>
+            <div class="pill">$70K/month revenue impact</div>
+            <div class="pill">OpenAI • Python</div>
+          </div>
+          <p style="margin-top:12px" class="muted">Deliverables: Automation scripts, production rules, A/B test results. <a href="https://github.com/imchhikara" target="_blank">Read more</a></p>
+        </div>
 
-    <div class="card">
-      <h3>Word2Vec Similarity Model</h3>
-      <ul>
-        <li>Built a semantic clustering model to group ad creatives using NLP embeddings.</li>
-        <li>Automated tagging, reducing manual work by 80% and improving classification accuracy.</li>
-      </ul>
-    </div>
+        <div class="card">
+          <div class="project-title">Word2Vec Similarity Model</div>
+          <div class="muted">Semantic clustering of creative names to automate tagging and grouping.</div>
+          <div class="kpi" style="margin-top:12px">
+            <div class="pill">Tagging automation 80%</div>
+            <div class="pill">Improved classification accuracy</div>
+            <div class="pill">Python • Gensim</div>
+          </div>
+          <p style="margin-top:12px" class="muted">Deliverables: Notebook, clustering visualizations. <a href="https://github.com/imchhikara" target="_blank">View notebook</a></p>
+        </div>
 
-    <div class="card">
-      <h3>AI Ads Production System</h3>
-      <ul>
-        <li>Implemented data-driven ad generation and performance tracking using LLMs (ChatGPT).</li>
-        <li>Reduced manual creative production effort by 90%, adding $70K in monthly revenue.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li><b>Programming:</b> Python, SQL</li>
-      <li><b>Visualization:</b> Tableau, Power BI, Matplotlib, Seaborn</li>
-      <li><b>Databases & Cloud:</b> PostgreSQL, MySQL, Azure, GCP</li>
-      <li><b>Analytics:</b> A/B Testing, KPI Benchmarking, Statistical Analysis</li>
-      <li><b>Frameworks:</b> Pandas, NumPy, Scikit-learn, PySpark, OpenAI API</li>
-      <li><b>Soft Skills:</b> Communication, Stakeholder Collaboration, Agile, Problem Solving</li>
-    </ul>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <h2>Experience</h2>
-
-    <div class="card">
-      <h3>BLKBOX.ai (Gaming Advertising Tech)</h3>
-      <p><b>Lead Data Analyst</b> — Apr 2025 – Present</p>
-      <ul>
-        <li>Leading AI-driven ad production initiatives to enhance scalability and creative efficiency.</li>
-        <li>Mentoring a team of analysts and developing KPI-tracking dashboards in Tableau and ReDash.</li>
-      </ul>
-      <p><b>Data Scientist</b> — Jan 2023 – Mar 2025</p>
-      <ul>
-        <li>Developed ChatGPT-powered automation for insight generation and A/B test analysis.</li>
-        <li>Built diagnostic frameworks reducing detection time by 40% and driving 30% revenue growth.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Independent Consultant</h3>
-      <p><b>Data Consultant (Real Estate)</b> — Feb 2020 – Dec 2022</p>
-      <ul>
-        <li>Advised 50+ clients using market data analysis and forecasting models to improve ROI.</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>PropEquity & Bullmen Realty</h3>
-      <ul>
-        <li>Conducted real estate market analytics, creating dashboards and visual reports for investment strategy.</li>
-      </ul>
-    </div>
-  </section>
+        <div class="card">
+          <div class="project-title">Campaign ROI Dashboard</div>
+          <div class="muted">Interactive ROI & spend dashboards for campaign optimization and reporting.</div>
+          <div class="kpi" style="margin-top:12px">
+            <div class="pill">Decision time -40%</div>
+            <div class="pill">Tableau • Power BI</div>
+          </div>
+          <p style="margin-top:12px" class="muted">Deliverables: Tableau Public dashboard. <a href="https://public.tableau.com/app/profile/imchhikara" target="_blank">Open dashboard</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- DASHBOARDS -->
-  <section id="dashboards">
-    <h2>Dashboards & Visualization</h2>
-    <p>
-      Explore my data storytelling and visualization projects:
-    </p>
-    <ul>
-      <li><a href="https://public.tableau.com/app/profile/imchhikara" target="_blank">Tableau Public Portfolio</a></li>
-      <li><a href="https://app.powerbi.com/" target="_blank">Power BI Dashboards</a></li>
-      <li><a href="https://github.com/imchhikara" target="_blank">GitHub Repositories</a></li>
-    </ul>
-  </section>
+  <div class="wrap">
+    <section id="dashboards" class="fade-up">
+      <h2>Dashboards</h2>
+      <div class="card" style="margin-top:14px">
+        <p class="muted">Interactive visualizations (Tableau Public). Click to view live dashboards.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+          <a class="card" style="min-width:220px;flex:1" href="https://public.tableau.com/app/profile/imchhikara" target="_blank">
+            <strong>Creative Performance Dashboard</strong>
+            <div class="muted" style="margin-top:6px">Filter by platform, date, and concept</div>
+          </a>
+          <a class="card" style="min-width:220px;flex:1" href="https://public.tableau.com/app/profile/imchhikara" target="_blank">
+            <strong>Campaign ROI & Attribution</strong>
+            <div class="muted" style="margin-top:6px">Spend vs Returns analysis</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <h2>Education</h2>
-    <ul>
-      <li><b>MBA</b> — Marketing & IT, Maharaja Agrasen Institute of Technology (2016–2018)</li>
-      <li><b>B.Tech</b> — Civil Engineering, PDM College of Engineering (2011–2015)</li>
-    </ul>
-  </section>
+  <!-- SKILLS -->
+  <div class="wrap">
+    <section id="skills" class="fade-up">
+      <h2>Skills & Tools</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="card" style="flex:1;min-width:220px">
+          <strong>Programming & ML</strong>
+          <p class="muted">Python, Pandas, NumPy, Scikit-learn, Gensim, PySpark</p>
+        </div>
+        <div class="card" style="flex:1;min-width:220px">
+          <strong>Visualization & BI</strong>
+          <p class="muted">Tableau, Power BI, Matplotlib, Seaborn, ReDash</p>
+        </div>
+        <div class="card" style="flex:1;min-width:220px">
+          <strong>Databases & Cloud</strong>
+          <p class="muted">PostgreSQL, MySQL, Azure, GCP</p>
+        </div>
+        <div class="card" style="flex:1;min-width:220px">
+          <strong>Analytics</strong>
+          <p class="muted">A/B Testing, KPI Design, Statistical Analysis, Experimentation</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- EXPERIENCE / TIMELINE -->
+  <div class="wrap">
+    <section id="experience" class="fade-up">
+      <h2>Experience</h2>
+      <div class="timeline" style="margin-top:12px">
+        <div class="timeline-item card">
+          <h4>Lead Data Analyst — BLKBOX.ai</h4>
+          <div class="muted">Apr 2025 – Present</div>
+          <p class="muted">Leading AI-driven ad production solutions, mentoring analysts, and building KPI frameworks. Delivered automation that improved creative production throughput and revenue uplift.</p>
+        </div>
+
+        <div class="timeline-item card">
+          <h4>Data Scientist — BLKBOX.ai</h4>
+          <div class="muted">Jan 2023 – Mar 2025</div>
+          <p class="muted">Built ChatGPT-powered insight systems and creative scorecards, increasing win rates and revenue.</p>
+        </div>
+
+        <div class="timeline-item card">
+          <h4>Independent Consultant — Real Estate</h4>
+          <div class="muted">Feb 2020 – Dec 2022</div>
+          <p class="muted">Advised HNI clients using data-driven market analysis and forecasting.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="wrap">
+    <section id="process" class="fade-up">
+      <h2>My Process</h2>
+      <div class="process" style="margin-top:12px">
+        <div class="step card">
+          <strong>1 • Define</strong>
+          <div class="muted">Clarify business goal & success metrics</div>
+        </div>
+        <div class="step card">
+          <strong>2 • Collect</strong>
+          <div class="muted">Aggregate & clean data (SQL, ETL)</div>
+        </div>
+        <div class="step card">
+          <strong>3 • Analyze</strong>
+          <div class="muted">EDA, modeling, hypothesis testing</div>
+        </div>
+        <div class="step card">
+          <strong>4 • Deliver</strong>
+          <div class="muted">Dashboards, reports & action items</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- METRICS -->
+  <div class="wrap">
+    <section id="metrics" class="fade-up">
+      <h2>Impact Metrics</h2>
+      <div class="metrics" style="margin-top:12px">
+        <div class="metric-card card">
+          <div class="metric-num">+15%</div>
+          <div class="muted">Creative win-rate uplift</div>
+        </div>
+        <div class="metric-card card">
+          <div class="metric-num">-90%</div>
+          <div class="muted">Manual effort in ad production</div>
+        </div>
+        <div class="metric-card card">
+          <div class="metric-num">+30%</div>
+          <div class="muted">Revenue uplift from AI features</div>
+        </div>
+        <div class="metric-card card">
+          <div class="metric-num">-40%</div>
+          <div class="muted">Issue detection / decision time</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      I’m open to roles in <b>Data Analytics, Data Science, or Product Analytics</b>.  
-      Let’s connect to discuss how I can bring data-driven growth to your organization.
-    </p>
-    <p>
-      📧 <a href="mailto:dpk.chhikara@gmail.com">dpk.chhikara@gmail.com</a><br>
-      🔗 <a href="https://linkedin.com/in/imchhikara" target="_blank">linkedin.com/in/imchhikara</a><br>
-      💻 <a href="https://github.com/imchhikara" target="_blank">github.com/imchhikara</a>
-    </p>
-  </section>
+  <div class="wrap">
+    <section id="contact" class="fade-up">
+      <h2>Contact</h2>
+      <div class="contact-grid" style="margin-top:12px">
+        <div class="card">
+          <p class="muted">I’m open to roles in Data Analytics, Data Science, and Product Analytics. If you’re hiring for someone who can translate data into business decisions, let’s talk.</p>
+          <p style="margin-top:12px"><strong>📧 Email</strong> <br><a href="mailto:dpk.chhikara@gmail.com">dpk.chhikara@gmail.com</a></p>
+          <p><strong>🔗 LinkedIn</strong><br><a href="https://linkedin.com/in/imchhikara" target="_blank">linkedin.com/in/imchhikara</a></p>
+        </div>
+
+        <div class="card">
+          <p class="muted"><strong>Quick apply</strong></p>
+          <p>Download resume & add to your application:</p>
+          <a class="btn" href="Deepak_SDA.pdf" download>📄 Download Resume</a>
+          <div style="margin-top:12px" class="muted">Or email me to schedule a chat.</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Deepak Chhikara | Senior Data Analyst | Built with ❤️ using GitHub Pages</p>
+    <div class="wrap">
+      <div style="margin-bottom:8px">© 2025 Deepak Chhikara • Senior Data Analyst</div>
+      <div class="muted">Built with ❤️ • GitHub: <a href="https://github.com/imchhikara" target="_blank">imchhikara</a></div>
+    </div>
   </footer>
 
+  <!-- SCRIPTS: theme toggle, smooth scroll, nav active -->
+  <script>
+    // theme toggle with persistence
+    const themeBtn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved) root.setAttribute('data-theme', saved);
+    else {
+      // default: dark
+      root.setAttribute('data-theme', 'dark');
+    }
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+
+    // smooth scrolling and nav active
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // highlight nav on scroll
+    const navLinks = document.querySelectorAll('.navlinks a');
+    const sections = Array.from(document.querySelectorAll('section'));
+    function onScroll(){
+      const y = window.scrollY + 120;
+      let current = sections.find(s => s.offsetTop <= y && s.offsetTop + s.offsetHeight > y);
+      navLinks.forEach(link => link.classList.toggle('active', current && link.getAttribute('href') === '#'+current.id));
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // reveal animations
+    window.addEventListener('load', ()=>{document.querySelectorAll('.fade-up').forEach((el,i)=>el.style.animationDelay=(i*80)+'ms')});
+  </script>
 </body>
 </html>
